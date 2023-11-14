@@ -1,0 +1,21 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  db: blog
+  user: root
+  password: 123456
+  logLevel: dev
+
+logger:
+  level: info
+#  level: warning
+  prefix: "go-blog"
+  director: log
+  show-line: true
+  log-in-console: true
+
+system:
+  host: "0.0.0.0"
+  port: 8888
+  env: debug
+
