@@ -13,15 +13,19 @@ func main() {
 
 	global.Logger = initial.InitLogger()
 
-	global.DB = initial.MysqlConnect()
+	global.DB = initial.Mysql()
 	fmt.Println(global.DB)
 
 	router := routers.InitRouter()
+	//router.Use(middleware.LoggerToFile("test.log"))
 	addr := global.Config.System.Addr()
 	global.Logger.Infof("server is running at: %s", addr)
 	err := router.Run(addr)
 	if err != nil {
 		global.Logger.Fatalf("can not start system: %v", err)
+		//log.Fatalf("can not start system: %v", err)
 	}
 
 }
+
+//docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7

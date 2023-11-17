@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func MysqlConnect() *gorm.DB {
+func Mysql() *gorm.DB {
 	if global.Config.Mysql.Host == "" {
 		//global.LOG.warn
 		global.Logger.Warnf("为配置host，取消连接！\n")
@@ -35,3 +35,13 @@ func MysqlConnect() *gorm.DB {
 	sqlDB.SetConnMaxLifetime(time.Hour * 4)
 	return db
 }
+
+//func MysqlRegisterTables() {
+//	db := global.DB
+//	err := db.AutoMigrate()
+//	if err != nil {
+//		global.Logger.Errorf("register table failed: %v", err)
+//		os.Exit(0)
+//	}
+//	global.Logger.Info("register table success")
+//}

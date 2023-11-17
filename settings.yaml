@@ -13,7 +13,7 @@ logger:
   director: log
   show-line: true
   log-in-console: true
-
+  logger-file-path: "data/logs"
 system:
   host: "0.0.0.0"
   port: 8888

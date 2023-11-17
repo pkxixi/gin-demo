@@ -15,5 +15,6 @@ func InitRouter() *gin.Engine {
 	ApiRouterGroup := router.Group("api")
 	RouterGroupApp := RouterGroup{ApiRouterGroup}
 	RouterGroupApp.SettingsRouter()
+	//router.Use(middleware.LoggerToFile("test1.log"))
 	return router
 }
