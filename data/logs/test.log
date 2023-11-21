@@ -1,0 +1,4 @@
+go-blog [2023-11-15 13:11:26] [33m[info][0m main.go:22 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-15 13:13:17] [33m[info][0m main.go:22 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-15 13:13:21] [33m[info][0m settings_info.go:10 go-blog/api/SettingsAapi.SettingsApi.SettingsInfoView this is the first log test
+go-blog [2023-11-15 13:13:27] [33m[info][0m settings_info.go:10 go-blog/api/SettingsAapi.SettingsApi.SettingsInfoView this is the first log test
