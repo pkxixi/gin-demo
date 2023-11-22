@@ -12,5 +12,5 @@ type DemoApiGroup struct {
 var ApiGroupApp = new(DemoApiGroup)
 
 var (
-	userService = service.DemoServiceGroupApp.UserServiceGroup
+	UserService = service.DemoServiceGroupApp.UserServiceGroup
 )
