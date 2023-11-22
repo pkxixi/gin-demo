@@ -14,8 +14,14 @@ logger:
   show-line: true
   log-in-console: true
   logger-file-path: "data/logs"
+
 system:
   host: "0.0.0.0"
   port: 8888
   env: debug
 
+jwt:
+  sign-key: gin-demo
+  expired-time: 1d
+  buffer-time: 6h
+  issuser: gin-demo
