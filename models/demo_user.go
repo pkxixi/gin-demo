@@ -2,7 +2,7 @@ package models
 
 import "github.com/gofrs/uuid/v5"
 
-// test your code here
+// User table construction your code here
 type User struct {
 	BaseModel
 	Uuid     uuid.UUID `json:"uuid" gorm:"index;comment:用户UUID"`

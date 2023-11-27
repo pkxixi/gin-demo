@@ -48,15 +48,22 @@ func (b *BaseApi) Login(c *gin.Context) {
 	user, e := UserService.Login(u)
 	if e != nil {
 		global.Logger.Errorf("Login failed, username does not exist or password is wrong, %v", u.Username)
-		uBlock.IncrFailedCount(c)
+		err := uBlock.IncrFailedCount(c)
+		if err != nil {
+			global.Logger.Info(err)
+		}
 		remainder := uBlock.GetRemainderCount(c)
 		if remainder > 0 {
 			msg := fmt.Sprintf("Login failed, username or password is wrong, you still have %d chances", remainder)
 			response.FailWithMsg(msg, c)
 			return
+		} else {
+			msg := fmt.Sprintf("Login failed, username does not exist or password is wrong, %v", u.Username)
+			response.FailWithMsg(msg, c)
+			return
 		}
 	}
-	fmt.Println(user)
+	global.Logger.Info(user.Password)
 	b.TokenNext(c, *user)
 	return
 }

@@ -32,7 +32,7 @@ func (b *BlockUtil) GetRemainderCount(c *gin.Context) int {
 }
 
 func (b *BlockUtil) GetFailedCount(c *gin.Context) int {
-	count, err := global.Redis.GetSet(c, b.LimitKey, 0).Result()
+	count, err := global.Redis.Get(c, b.LimitKey).Result()
 	if err != nil {
 		global.Logger.Infof("can not get / set key: %v", b.LimitKey)
 	}
@@ -40,7 +40,7 @@ func (b *BlockUtil) GetFailedCount(c *gin.Context) int {
 	return IntCount
 }
 
-func (b *BlockUtil) IncrFailedCount(c *gin.Context) {
+func (b *BlockUtil) IncrFailedCount(c *gin.Context) error {
 	count, err := global.Redis.GetSet(c, b.LimitKey, 0).Result()
 	if err != nil {
 		global.Logger.Infof("can not get / set key: %v", b.LimitKey)
@@ -50,9 +50,16 @@ func (b *BlockUtil) IncrFailedCount(c *gin.Context) {
 	if IntCount >= global.Config.System.LoginLimitCount {
 		_, err := global.Redis.Set(c, b.BlockKey, "true", time.Minute*time.Duration(b.KeyTTL)).Result()
 		if err != nil {
-			global.Logger.Infof("can not get / set key: %v", b.BlockKey)
+			global.Logger.Infof("can not set key: %v", b.BlockKey)
+			return err
+		}
+	} else {
+		_, err := global.Redis.Set(c, b.LimitKey, IntCount, time.Minute*time.Duration(b.KeyTTL)).Result()
+		if err != nil {
+			return err
 		}
 	}
+	return nil
 }
 
 func (b *BlockUtil) UnblockUser(c *gin.Context) {
@@ -62,6 +69,15 @@ func (b *BlockUtil) UnblockUser(c *gin.Context) {
 
 func (b *BlockUtil) IsBlocked(c *gin.Context) bool {
 	v, _ := global.Redis.Get(c, b.BlockKey).Result()
+	if v == "true" {
+		return true
+	}
+	return false
+}
+
+func IsUserBlocked(username string, c *gin.Context) bool {
+	blockKey := "_BLOCK_KEY_" + strings.ToUpper(username)
+	v, _ := global.Redis.Get(c, blockKey).Result()
 	if v == "true" {
 		return true
 	}

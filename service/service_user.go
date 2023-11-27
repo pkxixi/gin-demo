@@ -24,15 +24,17 @@ func (us UserService) Register(u models.User) (newUser models.User, err error) {
 }
 
 func (us UserService) Login(u *models.User) (newUser *models.User, err error) {
+	global.Logger.Info("service login")
 	if nil == global.DB {
 		return nil, fmt.Errorf("DB has not been connected: %v", global.Config.Mysql.Host)
 	}
 	var user models.User
 	err = global.DB.Where("username = ?", u.Username).First(&user).Error
 	if err == nil {
+		global.Logger.Info(err)
 		if ok := util.BcryptCheck(u.Password, user.Password); !ok {
-			return nil, fmt.Errorf("wrong password, please try again")
+			return nil, errors.New("wrong password, please try again")
 		}
 	}
-	return &user, nil
+	return &user, err
 }
