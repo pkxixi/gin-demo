@@ -28,7 +28,7 @@ func (us UserService) Login(u *models.User) (newUser *models.User, err error) {
 		return nil, fmt.Errorf("DB has not been connected: %v", global.Config.Mysql.Host)
 	}
 	var user models.User
-	err = global.DB.Where("username = ?", u.Username).Preload("Authorities").Preload("Authority").First(&user).Error
+	err = global.DB.Where("username = ?", u.Username).First(&user).Error
 	if err == nil {
 		if ok := util.BcryptCheck(u.Password, user.Password); !ok {
 			return nil, fmt.Errorf("wrong password, please try again")

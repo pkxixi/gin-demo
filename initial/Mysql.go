@@ -2,9 +2,11 @@ package initial
 
 import (
 	"go-blog/global"
+	"go-blog/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"os"
 	"time"
 )
 
@@ -34,6 +36,16 @@ func Mysql() *gorm.DB {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetConnMaxLifetime(time.Hour * 4)
 	return db
+}
+
+func RegisterTables() {
+	db := global.DB
+	err := db.AutoMigrate(models.User{})
+	if err != nil {
+		global.Logger.Error("register table failed")
+		os.Exit(0)
+	}
+	global.Logger.Info("register table success")
 }
 
 //func MysqlRegisterTables() {

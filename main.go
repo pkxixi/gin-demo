@@ -14,8 +14,10 @@ func main() {
 	global.Logger = initial.InitLogger()
 
 	global.DB = initial.Mysql()
+	initial.RegisterTables()
 	fmt.Println(global.DB)
 
+	global.Redis = initial.Redis()
 	router := routers.InitRouter()
 	//router.Use(middleware.LoggerToFile("test.log"))
 	addr := global.Config.System.Addr()

@@ -1,16 +1,13 @@
 package api
 
 import (
-	"go-blog/api/SettingsAapi"
-	"go-blog/service"
+	"go-blog/api/System"
+	v1 "go-blog/api/v1"
 )
 
 type DemoApiGroup struct {
-	SettingsApi SettingsAapi.SettingsApi
+	SystemApiGroup System.ApiSystemGroup
+	V1ApiGroup     v1.ApiV1Group
 }
 
-var ApiGroupApp = new(DemoApiGroup)
-
-var (
-	UserService = service.DemoServiceGroupApp.UserServiceGroup
-)
+var GroupApi = new(DemoApiGroup)

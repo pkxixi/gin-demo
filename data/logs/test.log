@@ -2,3 +2,43 @@ go-blog [2023-11-15 13:11:26] [33m[info][0m main.go:22 main.main server is run
 go-blog [2023-11-15 13:13:17] [33m[info][0m main.go:22 main.main server is running at: 0.0.0.0:8888
 go-blog [2023-11-15 13:13:21] [33m[info][0m settings_info.go:10 go-blog/api/SettingsAapi.SettingsApi.SettingsInfoView this is the first log test
 go-blog [2023-11-15 13:13:27] [33m[info][0m settings_info.go:10 go-blog/api/SettingsAapi.SettingsApi.SettingsInfoView this is the first log test
+go-blog [2023-11-23 17:02:44] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-23 17:02:44] [33m[info][0m main.go:23 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 15:15:20] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:39:04] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:41:38] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:42:26] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:42:35] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:43:08] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 15:43:08] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 15:43:08] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 15:48:43] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:49:09] [31m[error][0m Mysql.go:45 go-blog/initial.RegisterTables register table failed
+go-blog [2023-11-27 15:50:34] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 15:50:34] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 15:50:34] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 16:10:39] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 16:10:39] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 16:10:39] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 16:12:34] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 16:12:34] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 16:12:34] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 16:13:40] [33m[info][0m settings_info.go:10 go-blog/api/SettingsAapi.SettingsApi.SettingsInfoView this is the first log test
+go-blog [2023-11-27 16:14:47] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 16:14:47] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 16:14:47] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 16:28:02] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 16:28:02] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 16:28:02] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 17:19:59] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 17:19:59] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 17:19:59] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 17:20:35] [33m[info][0m settings_info.go:12 go-blog/api/System.(*SettingsApi).SettingsInfoView this is the first log test
+go-blog [2023-11-27 17:22:41] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 17:22:41] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 17:22:41] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 17:23:00] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-27 17:23:00] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-27 17:23:00] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-27 17:23:02] [33m[info][0m settings_info.go:12 go-blog/api/System.(*SettingsApi).SettingsInfoView this is the first log test
+go-blog [2023-11-27 17:26:51] [33m[info][0m user.go:79 go-blog/api/v1.(*BaseApi).TokenNext eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiSUQiOjEsIlVzZXJuYW1lIjoiIiwiTmlja25hbWUiOiIiLCJCdWZmZXJUaW1lIjoyMTYwMCwiYXVkIjpbImdpbi1kZW1vIl0sImV4cCI6MTcwMTE2MzYxMSwibmJmIjoxNzAxMDc3MjExfQ.81JMwPLHR5d0NZVym-e-RVtnMcC_550jIOUbzv_Ur_g

@@ -1,12 +1,14 @@
-package SettingsAapi
+package System
 
 import (
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
-	"go-blog/util/response"
+	"go-blog/models/response"
 )
 
-func (SettingsApi) SettingsInfoView(c *gin.Context) {
+type SettingsApi struct{}
+
+func (s *SettingsApi) SettingsInfoView(c *gin.Context) {
 	global.Logger.Info("this is the first log test")
 	response.OK(map[string]interface{}{}, "success", c)
 }
