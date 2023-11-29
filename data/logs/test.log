@@ -119,3 +119,44 @@ go-blog [2023-11-27 23:23:18] [33m[info][0m service_user.go:27 go-blog/service
 go-blog [2023-11-27 23:23:18] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, kkkk
 go-blog [2023-11-27 23:23:20] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
 go-blog [2023-11-27 23:23:20] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, kkkk
+go-blog [2023-11-28 18:20:35] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-28 18:20:35] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-28 18:20:35] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-28 18:21:17] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-28 18:21:18] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-28 18:21:20] [33m[info][0m blockUtil.go:46 go-blog/util.(*BlockUtil).IncrFailedCount can not get value for key: _LIMIT_KEY_KE.PAN
+go-blog [2023-11-28 18:22:48] [31m[error][0m user.go:116 go-blog/api/v1.(*BaseApi).Register failed to register: 用户名已注册
+go-blog [2023-11-28 18:23:08] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-28 18:23:08] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-28 18:23:18] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-28 18:23:18] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-28 18:23:23] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-28 18:23:23] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-28 18:23:23] [33m[info][0m user.go:68 go-blog/api/v1.(*BaseApi).Login 
+go-blog [2023-11-28 18:23:23] [33m[info][0m user.go:88 go-blog/api/v1.(*BaseApi).TokenNext eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiSUQiOjEsIlVzZXJuYW1lIjoiIiwiTmlja25hbWUiOiIiLCJCdWZmZXJUaW1lIjoyMTYwMCwiYXVkIjpbImdpbi1kZW1vIl0sImV4cCI6MTcwMTI1MzQwMywibmJmIjoxNzAxMTY3MDAzfQ.UOlSZ8EkYbqUZjvCAm6lhAudF2OkMn1o_lTaPsNPt8I
+go-blog [2023-11-29 10:56:07] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-29 10:56:07] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-29 10:56:07] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-29 10:56:22] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 10:56:22] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-29 10:56:22] [33m[info][0m blockUtil.go:46 go-blog/util.(*BlockUtil).IncrFailedCount can not get value for key: _LIMIT_KEY_KE.PAN
+go-blog [2023-11-29 10:56:31] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 10:56:31] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-29 10:56:35] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 10:56:35] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-29 10:56:37] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 10:56:37] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pan
+go-blog [2023-11-29 10:56:37] [33m[info][0m user.go:68 go-blog/api/v1.(*BaseApi).Login 
+go-blog [2023-11-29 10:56:37] [33m[info][0m user.go:88 go-blog/api/v1.(*BaseApi).TokenNext eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjoiMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwIiwiSUQiOjEsIlVzZXJuYW1lIjoiIiwiTmlja25hbWUiOiIiLCJCdWZmZXJUaW1lIjoyMTYwMCwiYXVkIjpbImdpbi1kZW1vIl0sImV4cCI6MTcwMTMxMjk5NywibmJmIjoxNzAxMjI2NTk3fQ.zIadcastpk39rY8qLlmtt90LoLUnaJ8jv3JcxChAVKI
+go-blog [2023-11-29 11:01:36] [33m[info][0m Mysql.go:48 go-blog/initial.RegisterTables register table success
+go-blog [2023-11-29 11:01:36] [33m[info][0m redis.go:22 go-blog/initial.Redis redis connect ping response: PONG
+go-blog [2023-11-29 11:01:36] [33m[info][0m main.go:24 main.main server is running at: 0.0.0.0:8888
+go-blog [2023-11-29 11:01:55] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 11:01:55] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pa
+go-blog [2023-11-29 11:01:55] [33m[info][0m blockUtil.go:46 go-blog/util.(*BlockUtil).IncrFailedCount can not get value for key: _LIMIT_KEY_KE.PA
+go-blog [2023-11-29 11:01:57] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 11:01:57] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pa
+go-blog [2023-11-29 11:01:58] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 11:01:58] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pa
+go-blog [2023-11-29 11:01:59] [33m[info][0m service_user.go:27 go-blog/service.UserService.Login service login
+go-blog [2023-11-29 11:01:59] [31m[error][0m user.go:50 go-blog/api/v1.(*BaseApi).Login Login failed, username does not exist or password is wrong, ke.pa

@@ -7,5 +7,6 @@ type ApiV1Group struct {
 }
 
 var (
-	UserService = service.DemoServiceGroupApp.UserServiceGroup
+	UserService = service.DemoServiceGroupApp.UserService
+	JWTService  = service.DemoServiceGroupApp.JwtService
 )

@@ -1,7 +1,8 @@
 package service
 
 type DemoServiceGroup struct {
-	UserServiceGroup UserService
+	UserService UserService
+	JwtService  JwtService
 }
 
 var DemoServiceGroupApp = new(DemoServiceGroup)

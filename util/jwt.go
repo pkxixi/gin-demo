@@ -21,11 +21,11 @@ var (
 	TokenInvalid     = errors.New("can not handle this token")
 )
 
-//func NewJWT() *JWT {
-//	return &JWT{
-//		[]byte(global.Config.JWT.SignKey),
-//	}
-//}
+func NewJWT() *JWT {
+	return &JWT{
+		[]byte(global.Config.JWT.SignKey),
+	}
+}
 
 func ParserDuration(d string) (time.Duration, error) {
 	d = strings.TrimSpace(d)

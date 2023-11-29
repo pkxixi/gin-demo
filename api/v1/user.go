@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/redis/go-redis/v9"
 	"go-blog/global"
 	"go-blog/models"
 	"go-blog/models/request"
@@ -50,7 +51,8 @@ func (b *BaseApi) Login(c *gin.Context) {
 		global.Logger.Errorf("Login failed, username does not exist or password is wrong, %v", u.Username)
 		err := uBlock.IncrFailedCount(c)
 		if err != nil {
-			global.Logger.Info(err)
+			global.Logger.Error(err)
+			response.Fail(map[string]interface{}{"error": err}, "cannot get info by blockUtil", c)
 		}
 		remainder := uBlock.GetRemainderCount(c)
 		if remainder > 0 {
@@ -58,10 +60,15 @@ func (b *BaseApi) Login(c *gin.Context) {
 			response.FailWithMsg(msg, c)
 			return
 		} else {
-			msg := fmt.Sprintf("Login failed, username does not exist or password is wrong, %v", u.Username)
+			msg := fmt.Sprintf("Login failed, you do not have chances any more, your account is blocked for %d minutes", global.Config.System.LoginLimitTime)
 			response.FailWithMsg(msg, c)
 			return
 		}
+		//else {
+		//	msg := fmt.Sprintf("Login failed, username does not exist or password is wrong, %v", u.Username)
+		//	response.FailWithMsg(msg, c)
+		//	return
+		//}
 	}
 	global.Logger.Info(user.Password)
 	b.TokenNext(c, *user)
@@ -84,12 +91,33 @@ func (b *BaseApi) TokenNext(c *gin.Context, user models.User) {
 		return
 	}
 	global.Logger.Info(token)
-	response.OK(response.LoginResponse{
-		User:      user,
-		Token:     token,
-		ExpiredAt: claims.RegisteredClaims.ExpiresAt.Unix() * 1000,
-	}, "login success", c)
-	return
+
+	//check if token is stored in redis or not
+	if _, err := JWTService.GetRedisJWT(user.Username); err == redis.Nil {
+		if err := JWTService.SetRedisJWT(token, user.Username); err != nil {
+			msg := fmt.Sprintf("setting jwt token failed, err: %v", err)
+			global.Logger.Error(msg)
+			response.FailWithMsg(msg, c)
+			return
+		}
+		res := response.LoginResponse{
+			User:      user,
+			Token:     token,
+			ExpiredAt: claims.RegisteredClaims.ExpiresAt.Unix() + 1000,
+		}
+		response.OK(res, "login success", c)
+	} else if err != nil {
+		msg := fmt.Sprintf("getting jwt token failed, err: %v", err)
+		global.Logger.Error(msg)
+		response.FailWithMsg(msg, c)
+	} else {
+		response.OK(response.LoginResponse{
+			User:      user,
+			Token:     token,
+			ExpiredAt: claims.RegisteredClaims.ExpiresAt.Unix() * 1000,
+		}, "login success", c)
+		return
+	}
 }
 
 func (b *BaseApi) Register(c *gin.Context) {
@@ -116,4 +144,33 @@ func (b *BaseApi) Register(c *gin.Context) {
 		return
 	}
 	response.OK(response.UserResponse{User: userReturn}, "register success", c)
+}
+
+func (b *BaseApi) GetUserList(c *gin.Context) {
+	var pageInfo request.PageInfo
+	err := c.ShouldBindJSON(&pageInfo)
+	if err != nil {
+		response.FailWithMsg(err.Error(), c)
+		return
+	}
+
+	err = util.Verify(pageInfo, util.PageInfoVerify)
+	if err != nil {
+		response.FailWithMsg(err.Error(), c)
+		return
+	}
+	list, total, err := UserService.GetUserList(pageInfo)
+	if err != nil {
+		msg := fmt.Sprintf("can not get user list, error: %v", err)
+		global.Logger.Errorf(msg)
+		response.FailWithMsg(msg, c)
+		return
+	}
+	result := response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}
+	response.OK(result, "get user list success", c)
 }

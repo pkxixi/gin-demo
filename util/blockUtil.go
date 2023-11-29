@@ -34,32 +34,52 @@ func (b *BlockUtil) GetRemainderCount(c *gin.Context) int {
 func (b *BlockUtil) GetFailedCount(c *gin.Context) int {
 	count, err := global.Redis.Get(c, b.LimitKey).Result()
 	if err != nil {
-		global.Logger.Infof("can not get / set key: %v", b.LimitKey)
+		global.Logger.Infof("can not get set key: %v", b.LimitKey)
 	}
 	IntCount, _ := strconv.Atoi(count)
 	return IntCount
 }
 
 func (b *BlockUtil) IncrFailedCount(c *gin.Context) error {
-	count, err := global.Redis.GetSet(c, b.LimitKey, 0).Result()
-	if err != nil {
-		global.Logger.Infof("can not get / set key: %v", b.LimitKey)
-	}
-	IntCount, _ := strconv.Atoi(count)
-	IntCount++
-	if IntCount >= global.Config.System.LoginLimitCount {
-		_, err := global.Redis.Set(c, b.BlockKey, "true", time.Minute*time.Duration(b.KeyTTL)).Result()
+	_, err := global.Redis.Get(c, b.LimitKey).Result()
+	if err != nil { // no value for limitKey
+		global.Logger.Infof("can not get value for key: %v", b.LimitKey)
+		e := global.Redis.Set(c, b.LimitKey, 1, time.Minute*time.Duration(b.KeyTTL)).Err()
+		if e != nil {
+			global.Logger.Errorf("can not set value for key: %v", b.LimitKey)
+			return e
+		}
+	} else { // already a value for limitKey
+		afterIncr, err := global.Redis.Incr(c, b.LimitKey).Result()
 		if err != nil {
-			global.Logger.Infof("can not set key: %v", b.BlockKey)
+			global.Logger.Errorf("can not increat value for key: %s\n", err)
 			return err
 		}
-	} else {
-		_, err := global.Redis.Set(c, b.LimitKey, IntCount, time.Minute*time.Duration(b.KeyTTL)).Result()
-		if err != nil {
-			return err
+		if int(afterIncr) >= global.Config.System.LoginLimitCount {
+			e := global.Redis.Set(c, b.BlockKey, "true", time.Minute*time.Duration(b.KeyTTL)).Err()
+			if e != nil {
+				global.Logger.Infof("can not set key: %v", b.BlockKey)
+				return e
+			}
+			//return e
 		}
 	}
 	return nil
+	//IntCount, _ := strconv.Atoi(count)
+	//IntCount++
+	//if IntCount >= global.Config.System.LoginLimitCount {
+	//	_, err := global.Redis.Set(c, b.BlockKey, "true", time.Minute*time.Duration(b.KeyTTL)).Result()
+	//	if err != nil {
+	//		global.Logger.Infof("can not set key: %v", b.BlockKey)
+	//		return err
+	//	}
+	//} else {
+	//	_, err := global.Redis.Set(c, b.LimitKey, IntCount, time.Minute*time.Duration(b.KeyTTL)).Result()
+	//	if err != nil {
+	//		return err
+	//	}
+	//}
+	//return nil
 }
 
 func (b *BlockUtil) UnblockUser(c *gin.Context) {
